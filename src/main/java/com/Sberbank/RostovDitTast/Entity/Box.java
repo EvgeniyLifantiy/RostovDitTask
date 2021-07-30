@@ -1,9 +1,10 @@
 package com.Sberbank.RostovDitTast.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.Set;
 
 /**
@@ -12,16 +13,24 @@ import java.util.Set;
  */
 @Entity
 @Table
+@Getter
+@Setter
+@NoArgsConstructor
 public class Box {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long box_id;
 
     private String name;
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long barcode;
 
-    @OneToMany(mappedBy = "box")
+    @OneToMany(mappedBy = "box",cascade = CascadeType.ALL)
     private Set<Document> documents;
 
+    public Box(String name) {
+        this.name = name;
+    }
 }

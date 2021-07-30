@@ -1,6 +1,9 @@
 package com.Sberbank.RostovDitTast.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GeneratorType;
 
@@ -14,8 +17,11 @@ import javax.persistence.*;
 @Entity
 @Table
 @NoArgsConstructor
+@Getter
+@Setter
 public class Document {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;
@@ -25,9 +31,11 @@ public class Document {
 
     @ManyToOne
     @JoinColumn(name="box_id", nullable=false)
+    @JsonIgnore
     private Box box;
 
-    public Document(String name) {
+    public Document(String name,Box box) {
+        this.box=box;
         this.name = name;
     }
 }

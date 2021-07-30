@@ -4,9 +4,8 @@ import com.Sberbank.RostovDitTast.Entity.Document;
 import com.Sberbank.RostovDitTast.Service.DocumentService;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -25,10 +24,9 @@ public class DocumentController {
     }
 
     DocumentService documentService;
-    @PostMapping(value = "/createDocument", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String createDocument(@RequestBody Document document){
+    @PostMapping(value = "/createDocument")
+    public ResponseEntity<Boolean> createDocument(@RequestBody Document document){
         System.out.println(document);
-        documentService.createDocument(document.getName(),document.getBox());
-        return "1";
+        return ResponseEntity.ok(documentService.createDocument(document.getName(),document.getBox()));
     }
 }

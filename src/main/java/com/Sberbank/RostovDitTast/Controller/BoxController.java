@@ -24,19 +24,19 @@ public class BoxController {
     }
 
     @GetMapping("/getAllBoxes")
-    public List<Box> getAllBoxes(){
-        return boxService.getAll();
+    public ResponseEntity<List<Box>> getAllBoxes(){
+        return ResponseEntity.ok(boxService.getAll());
     }
 
     @GetMapping("/getById/{id}")
-    public Box getBoxById(@PathVariable Long id){
+    public ResponseEntity<Box> getBoxById(@PathVariable Long id){
         Box box1 = boxService.getById(id);
         Box box2 = new Box();
         box2.setBarcode(box1.getBarcode());
         box2.setName(box1.getName());
         box2.setBox_id(box1.getBox_id());
         box2.setDocuments(box1.getDocuments());
-        return box2;
+        return ResponseEntity.ok(box2);
     }
 
     @PostMapping("/createBox")
@@ -45,8 +45,8 @@ public class BoxController {
     }
 
     @PutMapping("/updateBox")
-    public Box updateBox(@RequestBody Box box){
-        return boxService.update(box);
+    public ResponseEntity<Box> updateBox(@RequestBody Box box){
+        return ResponseEntity.ok(boxService.update(box));
     }
 
 }

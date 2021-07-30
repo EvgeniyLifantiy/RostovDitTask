@@ -1,4 +1,9 @@
 HELP.md
+mvnw
+mvnw.cmd
+hs_err_pid2504.log
+.gitignore
+.log
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

@@ -43,12 +43,12 @@ public class DocumentController {
         return ResponseEntity.ok(documentService.getById(id));
     }
 
-    @PutMapping
+    @PutMapping("/updateDocumentById")
     public ResponseEntity<Document> updateDocument(@RequestBody Document document){
         return ResponseEntity.ok(documentService.update(document));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteDocument/{id}")
     public void deleteDocument(@PathVariable Long id) {
         documentService.delete(id);
     }

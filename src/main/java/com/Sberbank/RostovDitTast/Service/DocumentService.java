@@ -40,6 +40,10 @@ public class DocumentService {
     }
 
     public Document getById(Long id) {
+        Document document=docRepository.getById(id);
+        Box box=document.getBox();
+        box.getDocuments().remove(document);
+        boxRepository.save(box);
         return docRepository.getById(id);
     }
 

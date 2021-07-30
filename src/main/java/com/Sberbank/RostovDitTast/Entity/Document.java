@@ -30,12 +30,12 @@ public class Document {
     private long barcode;
 
     @ManyToOne
-    @JoinColumn(name="box_id", nullable=false)
+    @JoinColumn(name="box_id", nullable=true)
     @JsonIgnore
     private Box box;
 
     public Document(String name,Box box) {
-        this.box=box;
         this.name = name;
+        this.box=box;
     }
 }

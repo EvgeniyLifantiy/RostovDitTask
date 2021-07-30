@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -27,8 +29,8 @@ public class Box {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long barcode;
 
-    @OneToMany(mappedBy = "box",cascade = CascadeType.ALL)
-    private Set<Document> documents;
+    @OneToMany(mappedBy = "box", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Document> documents=new ArrayList<>();
 
     public Box(String name) {
         this.name = name;

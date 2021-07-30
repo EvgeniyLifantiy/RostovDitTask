@@ -42,12 +42,15 @@ public class BoxService {
          }
 
 
-          @Transactional
-          public Box update(Box box) {
-              Box box1 = boxRepository.findById(box.getBox_id()).get();
-              box1.setName(box.getName());
-              box1.setBarcode(box.getBarcode());
-              return boxRepository.save(box1);
-           }
+    @Transactional
+    public Box update(Box box) {
+        Box box1 = boxRepository.findById(box.getBox_id()).get();
+        if(box1!=null){
+            box1.setName(box.getName());
+            box1.setBarcode(box.getBarcode());
+            return boxRepository.save(box1);
+        }
+        return null;
+    }
 
 }

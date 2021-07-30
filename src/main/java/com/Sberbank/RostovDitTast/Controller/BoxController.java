@@ -28,7 +28,7 @@ public class BoxController {
         return ResponseEntity.ok(boxService.getAll());
     }
 
-    @GetMapping("/getById/{id}")
+    @GetMapping("/getBoxById/{id}")
     public ResponseEntity<Box> getBoxById(@PathVariable Long id){
         Box box1 = boxService.getById(id);
         Box box2 = new Box();
@@ -47,6 +47,11 @@ public class BoxController {
     @PutMapping("/updateBox")
     public ResponseEntity<Box> updateBox(@RequestBody Box box){
         return ResponseEntity.ok(boxService.update(box));
+    }
+
+    @DeleteMapping("/deleteBox/{id}")
+    public void deleteBox(@PathVariable Long id){
+        boxService.delete(id);
     }
 
 }

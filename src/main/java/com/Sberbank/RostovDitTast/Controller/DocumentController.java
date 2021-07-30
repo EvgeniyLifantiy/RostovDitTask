@@ -33,7 +33,7 @@ public class DocumentController {
         return ResponseEntity.ok(documentService.create(map));
     }
 
-    @GetMapping
+    @GetMapping("/getAllDocuments")
     public ResponseEntity<List<Document>> getAllDocuments(){
         return ResponseEntity.ok(documentService.getAll());
     }

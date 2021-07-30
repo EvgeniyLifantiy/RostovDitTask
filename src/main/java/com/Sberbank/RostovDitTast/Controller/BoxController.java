@@ -44,12 +44,12 @@ public class BoxController {
         return ResponseEntity.ok(boxService.create(box));
     }
 
-    @PutMapping("/updateBox")
+    @PutMapping("/updateBoxById")
     public ResponseEntity<Box> updateBox(@RequestBody Box box){
         return ResponseEntity.ok(boxService.update(box));
     }
 
-    @DeleteMapping("/deleteBox/{id}")
+    @DeleteMapping("/deleteBoxByYd/{id}")
     public void deleteBox(@PathVariable Long id){
         boxService.delete(id);
     }

@@ -18,7 +18,7 @@ import java.util.Map;
  * @project RostovDitTast
  */
 
-@Controller
+@Controller("/api/document")
 public class DocumentController {
 
     private final DocumentService documentService;
@@ -28,27 +28,27 @@ public class DocumentController {
         this.documentService = documentService;
     }
 
-    @PostMapping(value = "/createDocument")
+    @PostMapping(value = "/create")
     public ResponseEntity<Document> createDocument(@RequestBody Map<String,String> map){
         return ResponseEntity.ok(documentService.create(map));
     }
 
-    @GetMapping("/getAllDocuments")
+    @GetMapping("/get")
     public ResponseEntity<List<Document>> getAllDocuments(){
         return ResponseEntity.ok(documentService.getAll());
     }
 
-    @GetMapping("/getDocumentById/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<Document> getDocumentById(@PathVariable Long id){
         return ResponseEntity.ok(documentService.getById(id));
     }
 
-    @PutMapping("/updateDocumentById")
+    @PutMapping("/update")
     public ResponseEntity<Document> updateDocument(@RequestBody Document document){
         return ResponseEntity.ok(documentService.update(document));
     }
 
-    @DeleteMapping("/deleteDocument/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteDocument(@PathVariable Long id) {
         documentService.delete(id);
     }

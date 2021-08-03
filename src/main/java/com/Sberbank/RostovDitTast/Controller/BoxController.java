@@ -13,7 +13,7 @@ import java.util.List;
  * @author Евгений
  * @project RostovDitTast
  */
-@Controller
+@Controller("/api/box")
 public class BoxController {
 
     private final BoxService boxService;
@@ -23,12 +23,12 @@ public class BoxController {
         this.boxService = boxService;
     }
 
-    @GetMapping("/getAllBoxes")
+    @GetMapping
     public ResponseEntity<List<Box>> getAllBoxes(){
         return ResponseEntity.ok(boxService.getAll());
     }
 
-    @GetMapping("/getBoxById/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Box> getBoxById(@PathVariable Long id){
         Box box1 = boxService.getById(id);
         Box box2 = new Box();
@@ -39,17 +39,17 @@ public class BoxController {
         return ResponseEntity.ok(box2);
     }
 
-    @PostMapping("/createBox")
+    @PostMapping("/create")
     public ResponseEntity<Box> createBox(@RequestBody Box box){
         return ResponseEntity.ok(boxService.create(box));
     }
 
-    @PutMapping("/updateBoxById")
+    @PutMapping("/update")
     public ResponseEntity<Box> updateBox(@RequestBody Box box){
         return ResponseEntity.ok(boxService.update(box));
     }
 
-    @DeleteMapping("/deleteBoxByYd/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteBox(@PathVariable Long id){
         boxService.delete(id);
     }

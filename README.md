@@ -25,23 +25,23 @@
 ## Api requests ##
 ### Box operations
 
-#### /getAllBoxes - GET - get all boxes
-#### /getBoxById/{id} - GET - get box by id 
-#### /createBox - POST - create box by info from requestBody : 
+#### api/box - GET - get all boxes
+#### api/box/{id} - GET - get box by id 
+#### api/box - POST - create box by info from requestBody : 
                       {"name":"sber"}
-#### /updateBoxById - PUT - update box by info from requestBody: 
+#### api/box - PUT - update box by info from requestBody: 
                       {"name":"sber"}
-#### /deleteBoxByID/{id} - DELETE - delete box by id
+#### api/box/{id} - DELETE - delete box by id
 
 ### Document operations
 
-#### /getAllDocuments - GET - get all documents
-#### /getDocumentById/{id} - GET - get documents by id 
-#### /createDocument - POST - create document by info from requestBody : 
+#### api/document - GET - get all documents
+#### api/document/{id} - GET - get documents by id 
+#### api/document - POST - create document by info from requestBody : 
                       {"name":"sber","boxId":"1"}
-#### /updateDocumentById - PUT - update document by info from requestBody: 
+#### api/document - PUT - update document by info from requestBody: 
                       {"name":"sber"}
-#### /deleteDocumentById/{id} - DELETE - delete document by id
+#### api/document/{id} - DELETE - delete document by id
 
 
 
